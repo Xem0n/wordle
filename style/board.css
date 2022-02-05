@@ -1,0 +1,71 @@
+.board {
+    width: 90%;
+    min-width: 300px;
+    max-width: 350px;
+
+    margin-top: 80px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.board > .row {
+    display: contents;
+}
+
+.row > .element {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 1 / 1;
+
+    border: 2px solid #000;
+    border-radius: 10px;
+
+    /* animation: show 1s forwards; */
+}
+
+@keyframes show {
+    from {
+        transform: rotateX(0deg);
+    }
+
+    35% {
+        transform: rotateX(90deg);
+        background: transparent;
+        border-color: #000;
+    }
+    
+    to {
+        transform: rotateX(0deg);
+        /* background: #06d6a0; */
+        /* border-color: #06d6a0; */
+        /* background: #f9c74f; */
+        /* border-color: #f9c74f; */
+    }
+}
+
+.element > input {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+    border-radius: inherit;
+    outline: 0;
+
+    color: #e0fbfc;
+    text-align: center;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    background: transparent;
+    z-index: 100;
+}
+
+.element > input.active {
+    pointer-events: initial;
+}

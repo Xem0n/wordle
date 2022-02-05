@@ -1,0 +1,120 @@
+:root {
+    --experience: 60%; 
+}
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+
+    top: 0px;
+
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    background: #0b090a;
+    /* background: transparent; */
+}
+
+.title {
+    margin-left: 20px;
+
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+.title > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.progress {
+    position: relative;
+
+    margin-left: auto;
+    margin-right: 20px;
+
+    width: 105px;
+}
+
+.progress > .level {
+    user-select: none;
+}
+
+.progress > .bar {
+    position: relative;
+    margin-top: 4px;
+
+    width: 100%;
+    height: 2px;
+
+    background: #e0fbfc;
+}
+
+.progress > .bar::after {
+    position: absolute;
+
+    width: var(--experience);
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    content: '';
+
+    background: #00afb9;
+
+    transition: width 0.5s;
+}
+
+.progress > .tooltip {
+    position: absolute;
+
+    width: auto;
+    white-space: nowrap;
+
+    right: -7px;
+    margin-top: 10px;
+    
+    padding: 2px 5px;
+
+    color: #0b090a;
+    text-align: center;
+    user-select: none;
+
+    visibility: hidden;
+    opacity: 0;
+
+    border-radius: 8px;
+
+    background: #e0fbfc;
+
+    transition: opacity 0.3s;
+}
+
+.progress > .tooltip::after {
+    position: absolute;
+    top: -6px;
+    left: calc(50% - 10px);
+
+    width: 0px;
+    height: 0px;
+
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  
+    border-bottom: 10px solid #e0fbfc;
+
+    background: transparent;
+
+    content: '';
+}
+
+.progress:hover > .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
