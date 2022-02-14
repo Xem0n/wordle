@@ -57,10 +57,21 @@
     border: 2px solid #000;
     border-radius: 10px;
 
-    /* animation: show 1s forwards; */
 }
 
-@keyframes show {
+.row > .element.valid {
+    animation: showValid 0.7s forwards;
+}
+
+.row > .element.halfValid {
+    animation: showHalfValid 0.7s forwards;
+}
+
+.row > .element.invalid {
+    animation: show 0.7s forwards;
+}
+
+@keyframes showValid {
     from {
         transform: rotateX(0deg);
     }
@@ -73,10 +84,41 @@
     
     to {
         transform: rotateX(0deg);
-        /* background: #06d6a0; */
-        /* border-color: #06d6a0; */
-        /* background: #f9c74f; */
-        /* border-color: #f9c74f; */
+        background: #06d6a0;
+        border-color: #06d6a0;
+    }
+}
+
+@keyframes showHalfValid {
+    from {
+        transform: rotateX(0deg);
+    }
+
+    35% {
+        transform: rotateX(90deg);
+        background: transparent;
+        border-color: #000;
+    }
+    
+    to {
+        transform: rotateX(0deg);
+        background: #f9c74f;
+        border-color: #f9c74f;
+    }
+}
+
+@keyframes show {
+    from {
+        transform: rotateX(0deg);
+    }
+
+    35% {
+        transform: rotateX(90deg);
+        background: transparent;
+    }
+    
+    to {
+        transform: rotateX(0deg);
     }
 }
 
