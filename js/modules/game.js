@@ -1,19 +1,28 @@
 'use strict';
 
+import Board from './board.js';
+
+const KEY_ENTER = 'Enter';
+const DELAY = 550;
+
 class Game {
-    #root;
-    #boardElement;
     #board;
+    #tries;
+    #letters;
+    #currentRow;
     #dictionary;
+    #started;
+    #secretWord;
 
     constructor() {
         return (async () => {
-            this.#root = document.querySelector(':root');
-
-            this.#boardElement = document.querySelector('.board');
-            this.#board = [];
+            this.#board = new Board();
 
             this.#dictionary = await this.#loadDictionary();
+
+            this.#started = false;
+
+            this.#initListeners();
 
             return this;
         })();
@@ -26,54 +35,88 @@ class Game {
         return json;
     }
 
-    createBoard(rows, elements) {
-        this.#updateBoardSize(elements);
-        this.#board = [];
-
-        for (let i = 0; i < rows; i++) {
-            this.#board.push(this.#createRow(elements));
-        }
-    }
-
-    #updateBoardSize(columns) {
-        this.#root.style.setProperty('--columns', columns);
-    }
-
-    #createRow(elements) {
-        const rowElement = document.createElement('div');
-        rowElement.classList.add('row');
-        this.#boardElement.append(rowElement);
-
-        const row = [];
-
-        for (let i = 0; i < elements; i++) {
-            const element = this.#createElement();
-            rowElement.append(element);
-
-            row.push(element);
-        }
-
-        return row;
-    }
-
-    #createElement() {
-        const div = document.createElement('div');
-        div.classList.add('element');
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.maxLength = '1';
-        input.disabled = true;
+    create(rows, columns) {
+        this.#board.create(rows, columns);
         
-        div.append(input);
-
-        return div;
+        this.#tries = rows;
+        this.#letters = columns;
     }
 
-    cleanup() {
-        document.querySelectorAll('.board *').forEach(element => element.remove());
+    start() {
+        this.#started = true;
+        this.#secretWord = this.#getRandomWord(this.#letters);
+        this.#currentRow = 0;
 
-        this.#board = [];
+        this.#board.modifyRow(0, false);
+    }
+
+    #getRandomWord(length) {
+        const random = Math.floor(Math.random() * this.#dictionary[length].length);
+
+        return this.#dictionary[length][random];
+    }
+
+    #keyDownHandler(event) {
+        if (!this.#started || event.key !== KEY_ENTER) {
+            return;
+        }
+
+        this.#checkWord();
+    }
+
+    #checkWord() {
+        const word = this.#board.getWord(this.#currentRow);
+    
+        if (!this.#dictionary[this.#letters].includes(word)) {
+            return;
+        }
+
+        for (let i = 0; i < word.length; i++) {
+            const userLetter = word[i];
+            const secretLetter = this.#secretWord[i];
+
+            const delay = i * DELAY;
+            let state;
+
+            if (userLetter === secretLetter) {
+                state = 'valid';
+            } else if (this.#secretWord.includes(userLetter)) {
+                state = 'halfValid';
+            } else {
+                state = 'invalid';
+            }
+
+            this.#board.showLetter(this.#currentRow, i, state, delay);
+        }
+
+        if (word === this.#secretWord) {
+            this.#win();
+        } else if (this.#isLastTry()) {
+            this.#lose();
+        } else {
+            this.#nextRow();
+        }
+    }
+
+    #isLastTry() {
+        return this.#currentRow + 1 === this.#tries;
+    }
+
+    #nextRow() {
+        this.#board.modifyRow(this.#currentRow, true);
+        this.#board.modifyRow(++this.#currentRow, false);
+    }
+
+    #win() {
+        this.#board.modifyRow(this.#currentRow, true);
+    }
+
+    #lose() {
+        this.#board.modifyRow(this.#currentRow, true);
+    }
+
+    #initListeners() {
+        document.addEventListener('keydown', this.#keyDownHandler.bind(this));
     }
 }
 
