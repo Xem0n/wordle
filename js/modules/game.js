@@ -107,7 +107,9 @@ class Game {
         this.#board.modifyRow(this.#currentRow, true);
 
         this.#notification.update({
-            won: true
+            won: true,
+            rounds: this.#currentRow + 1,
+            exp: 0
         });
         this.#showNotification();
     }
@@ -116,7 +118,8 @@ class Game {
         this.#board.modifyRow(this.#currentRow, true);
 
         this.#notification.update({
-            won: false
+            won: false,
+            secretWord: this.#secretWord
         });
         this.#showNotification();
     }
