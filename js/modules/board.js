@@ -82,6 +82,17 @@ class Board {
         }, delay);
     }
 
+    clear() {
+        document.querySelectorAll('.board .element').forEach(element => {
+            element.classList.remove('valid', 'halfValid', 'invalid');
+        });
+
+        document.querySelectorAll('.board input').forEach(element => {
+            element.value = '';
+            element.disabled = true;
+        });
+    }
+
     cleanup() {
         document.querySelectorAll('.board *').forEach(element => element.remove());
 
