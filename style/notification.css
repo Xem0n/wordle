@@ -74,3 +74,8 @@ wordle-notification .text {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+wordle-notification .text .word {
+    color: #fff;
+    font-weight: 600;
+}
