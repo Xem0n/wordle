@@ -28,6 +28,7 @@
     display: none;
 }
 
+wordle-board {
     width: 90%;
     min-width: 300px;
     max-width: 350px;
@@ -66,7 +67,7 @@ wordle-board > .row {
 }
 
 .row > .element.invalid {
-    animation: show 0.7s forwards;
+    animation: showInvalid 0.7s forwards;
 }
 
 @keyframes showValid {
@@ -105,7 +106,7 @@ wordle-board > .row {
     }
 }
 
-@keyframes show {
+@keyframes showInvalid {
     from {
         transform: rotateX(0deg);
     }
@@ -113,10 +114,13 @@ wordle-board > .row {
     35% {
         transform: rotateX(90deg);
         background: transparent;
+        border-color: #000;
     }
     
     to {
         transform: rotateX(0deg);
+        background: #131212;
+        border-color: #161a1d;
     }
 }
 
