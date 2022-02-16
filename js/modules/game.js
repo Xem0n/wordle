@@ -13,10 +13,12 @@ class Game {
     #dictionary;
     #started;
     #secretWord;
+    #notification;
 
     constructor() {
         return (async () => {
             this.#board = new Board();
+            this.#notification = document.querySelector('wordle-notification');
 
             this.#dictionary = await this.#loadDictionary();
 
@@ -109,14 +111,37 @@ class Game {
 
     #win() {
         this.#board.modifyRow(this.#currentRow, true);
+
+        this.#notification.update({
+            won: true
+        });
+        this.#showNotification();
     }
 
     #lose() {
         this.#board.modifyRow(this.#currentRow, true);
+
+        this.#notification.update({
+            won: false
+        });
+        this.#showNotification();
+    }
+
+    #showNotification() {
+        const delay = this.#letters * DELAY;
+
+        setTimeout(() => {
+            this.#notification.show();
+        }, delay);
+    }
+
+    #handleHideNotification() {
+        this.#board.clear();
     }
 
     #initListeners() {
         document.addEventListener('keydown', this.#keyDownHandler.bind(this));
+        this.#notification.addEventListener('hide', this.#handleHideNotification.bind(this));
     }
 }
 
