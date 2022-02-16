@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/header.css">
     <link rel="stylesheet" href="style/board.css">
+    <link rel="stylesheet" href="style/notification.css">
 
     <script src="js/main.js" type="module" defer></script>
 </head>
@@ -29,6 +30,25 @@
         <div class="board hide">
            
        </div>
+
+       <wordle-notification>
+            <div class="close">&Cross;</div>
+            <div class="won">
+                <h1 class="title">You won!</h1>
+                <p class="text">
+                    Congratulation!<br>
+                    You guessed the word in <span class="rounds"></span> rounds!<br>
+                    You gain <span class="exp"></span> EXP!
+                </p>
+            </div>
+            <div class="lost">
+                <h1 class="title">You lost!</h1>
+                <p class="text">
+                    Try once more!<br>
+                    The secret word was: <span class="word"></span>
+                </p>
+            </div>
+       </wordle-notification>
     </div>
 </body>
 </html>

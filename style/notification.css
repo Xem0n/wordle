@@ -1,0 +1,76 @@
+wordle-notification {
+    position: fixed;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    width: 600px;
+    max-width: 95%;
+    /* height: 400px; */
+    height: auto;
+
+    top: -400px;
+    left: 50%;
+
+    border-radius: 5px;
+
+    margin: 0;
+    padding: 0 20px;
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+    transform: translate(-50%, -50%);
+
+    background: #161a1d;
+    box-shadow:  -12px -12px 24px #121618,
+             12px 12px 24px #121618;
+
+    transition: top 0.73s;
+}
+
+wordle-notification.show {
+    top: 50%;
+}
+
+wordle-notification > .close {
+    position: absolute;
+
+    top: 0px;
+    right: 5px;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 2rem;
+    line-height: 100%;
+    color: #8e8c8c;
+
+    cursor: pointer;
+}
+
+wordle-notification > .close:hover {
+    color: inherit;
+}
+
+wordle-notification > .won,
+wordle-notification > .lost {
+    display: none;
+}
+
+wordle-notification > div.show {
+    display: contents;
+}
+
+wordle-notification .title {
+    margin: 0;
+    margin-top: 20px;
+}
+
+wordle-notification .text {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
