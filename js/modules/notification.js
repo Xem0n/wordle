@@ -32,12 +32,19 @@ class WordleNotification extends HTMLDivElement {
     }
 
     update({ won, secretWord = '', rounds = 1, exp = 0 }) {
+        if (won) {
             this.#won.classList.add('show');
             this.#lost.classList.remove('show');
         } else {
             this.#lost.classList.add('show');
             this.#won.classList.remove('show');
         }
+
+        const roundString = rounds > 1 ? 'rounds' : 'round';
+
+        this.#word.innerText = secretWord;
+        this.#rounds.innerText = `${rounds} ${roundString}`;
+        this.#exp.innerText = exp.toString();
     }
 
     #handleClose() {
