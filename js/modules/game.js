@@ -2,6 +2,7 @@
 
 const KEY_ENTER = 'Enter';
 const DELAY = 550;
+const DEFAULT_EXP = 10;
 
 class Game {
     #user;
@@ -112,9 +113,11 @@ class Game {
         this.#notification.update({
             won: true,
             rounds: this.#currentRow + 1,
-            exp: 0
+            exp: DEFAULT_EXP
         });
         this.#showNotification();
+
+        this.#user.exp += DEFAULT_EXP;
     }
 
     #lose() {
