@@ -57,9 +57,7 @@ class Game {
     }
 
     #keyDownHandler(event) {
-        if (!this.#started || event.key !== KEY_ENTER) {
-            return;
-        }
+        if (!this.#started || event.key !== KEY_ENTER) return;
 
         this.#checkWord();
     }
@@ -67,9 +65,7 @@ class Game {
     #checkWord() {
         const word = this.#board.getWord(this.#currentRow);
     
-        if (!this.#dictionary[this.#letters].includes(word)) {
-            return;
-        }
+        if (!this.#dictionary[this.#letters].includes(word)) return;
 
         for (let i = 0; i < word.length; i++) {
             const userLetter = word[i];
