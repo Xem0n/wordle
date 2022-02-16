@@ -31,15 +31,7 @@ class WordleNotification extends HTMLDivElement {
         this.dispatchEvent(HIDE_EVENT);
     }
 
-    /*
-    Data Interface
-    won: boolean
-    secretWord?: string
-    rounds?: number
-    exp?: number
-    */
-    update(data) {
-        if (data.won) {
+    update({ won, secretWord = '', rounds = 1, exp = 0 }) {
             this.#won.classList.add('show');
             this.#lost.classList.remove('show');
         } else {
