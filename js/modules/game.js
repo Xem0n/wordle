@@ -140,6 +140,7 @@ class Game {
 
     #handleHideNotification() {
         this.#board.clear();
+        this.start();
     }
 
     #initListeners() {
