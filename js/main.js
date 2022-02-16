@@ -2,6 +2,7 @@
 
 import User from './modules/user.js';
 import Game from './modules/game.js';
+import './modules/notification.js';
 
 const board = document.querySelector('.board');
 const loading = document.querySelector('.loading');
