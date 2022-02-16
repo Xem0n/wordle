@@ -60,7 +60,7 @@ class Game {
         return this.#dictionary[length][random];
     }
 
-    #keyDownHandler(event) {
+    #handleKeyDown(event) {
         if (!this.#started || event.key !== KEY_ENTER) return;
 
         this.#checkWord();
@@ -143,7 +143,7 @@ class Game {
     }
 
     #initListeners() {
-        document.addEventListener('keydown', this.#keyDownHandler.bind(this));
+        document.addEventListener('keydown', this.#handleKeyDown.bind(this));
         this.#notification.addEventListener('hide', this.#handleHideNotification.bind(this));
     }
 }
