@@ -28,7 +28,6 @@
     display: none;
 }
 
-.board {
     width: 90%;
     min-width: 300px;
     max-width: 350px;
@@ -40,11 +39,11 @@
     gap: 10px;
 }
 
-.board.hide {
+wordle-board.hide {
     display: none;
 }
 
-.board > .row {
+wordle-board > .row {
     display: contents;
 }
 

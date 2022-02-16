@@ -1,15 +1,15 @@
 'use strict';
 
-class Board {
+class WordleBoard extends HTMLDivElement {
     #root;
     #board;
-    #boardElement;
 
     constructor() {
+        super();
+
         this.#root = document.querySelector(':root');
 
         this.#board = [];
-        this.#boardElement = document.querySelector('.board');
     }
 
     create(rows, elements) {
@@ -28,7 +28,7 @@ class Board {
     #createRow(elements) {
         const rowElement = document.createElement('div');
         rowElement.classList.add('row');
-        this.#boardElement.append(rowElement);
+        this.append(rowElement);
 
         const row = [];
 
@@ -73,7 +73,7 @@ class Board {
             word += input.value || ' ';
         });
 
-        return word;
+        return word.toLowerCase();
     }
 
     showLetter(row, column, state, delay) {
@@ -83,21 +83,21 @@ class Board {
     }
 
     clear() {
-        document.querySelectorAll('.board .element').forEach(element => {
+        this.querySelectorAll('.element').forEach(element => {
             element.classList.remove('valid', 'halfValid', 'invalid');
         });
 
-        document.querySelectorAll('.board input').forEach(element => {
+        this.querySelectorAll('input').forEach(element => {
             element.value = '';
             element.disabled = true;
         });
     }
 
     cleanup() {
-        document.querySelectorAll('.board *').forEach(element => element.remove());
+        this.querySelectorAll('*').forEach(element => element.remove());
 
         this.#board = [];
     }
 }
 
-export default Board;
+customElements.define('wordle-board', WordleBoard, { extends: 'div' });

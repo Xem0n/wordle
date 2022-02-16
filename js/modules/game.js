@@ -1,7 +1,5 @@
 'use strict';
 
-import Board from './board.js';
-
 const KEY_ENTER = 'Enter';
 const DELAY = 550;
 
@@ -17,7 +15,7 @@ class Game {
 
     constructor() {
         return (async () => {
-            this.#board = new Board();
+            this.#board = document.querySelector('wordle-board');
             this.#notification = document.querySelector('wordle-notification');
 
             this.#dictionary = await this.#loadDictionary();

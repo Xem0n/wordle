@@ -2,9 +2,10 @@
 
 import User from './modules/user.js';
 import Game from './modules/game.js';
+import './modules/board.js';
 import './modules/notification.js';
 
-const board = document.querySelector('.board');
+const board = document.querySelector('wordle-board');
 const loading = document.querySelector('.loading');
 
 const showLoading = () => {
