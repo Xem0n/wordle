@@ -4,6 +4,7 @@ const KEY_ENTER = 'Enter';
 const DELAY = 550;
 
 class Game {
+    #user;
     #board;
     #tries;
     #letters;
@@ -13,8 +14,10 @@ class Game {
     #secretWord;
     #notification;
 
-    constructor() {
+    constructor(user) {
         return (async () => {
+            this.#user = user;
+
             this.#board = document.querySelector('wordle-board');
             this.#notification = document.querySelector('wordle-notification');
 

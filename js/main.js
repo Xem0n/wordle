@@ -23,7 +23,7 @@ const hideLoading = () => {
 
     const user = new User();
 
-    const game = await new Game();
+    const game = await new Game(user);
     game.create(6, 5);
     game.start();
 
