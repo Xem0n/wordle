@@ -1,6 +1,6 @@
 'use strict';
 
-class WordleBoard extends HTMLDivElement {
+class WordleBoard extends HTMLElement {
     #root;
     #board;
 
@@ -100,4 +100,4 @@ class WordleBoard extends HTMLDivElement {
     }
 }
 
-customElements.define('wordle-board', WordleBoard, { extends: 'div' });
+customElements.define('wordle-board', WordleBoard);

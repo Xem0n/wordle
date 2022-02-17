@@ -2,7 +2,7 @@
 
 const HIDE_EVENT = new Event('hide');
 
-class WordleNotification extends HTMLDivElement {
+class WordleNotification extends HTMLElement {
     #won;
     #lost;
     #rounds;
@@ -58,4 +58,4 @@ class WordleNotification extends HTMLDivElement {
     }
 }
 
-customElements.define('wordle-notification', WordleNotification, { extends: 'div' });
+customElements.define('wordle-notification', WordleNotification);
