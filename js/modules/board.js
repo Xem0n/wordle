@@ -65,13 +65,13 @@ class WordleBoard extends HTMLElement {
     }
 
     getWord(row) {
-        let word = '';
+        const initialWord = '';
 
-        this.#board[row].forEach(element => {
-            const input = element.querySelector('input');
-
-            word += input.value || ' ';
-        });
+        const word = this.#board[row].reduce(
+            (previousValue, currentValue) => 
+            previousValue + (currentValue.querySelector('input').value || ' '),
+            initialWord
+        );
 
         return word.toLowerCase();
     }
