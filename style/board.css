@@ -48,7 +48,7 @@ wordle-board > .row {
     display: contents;
 }
 
-.row > .element {
+wordle-board > .row > .element {
     position: relative;
 
     width: 100%;
@@ -58,15 +58,15 @@ wordle-board > .row {
     border-radius: 10px;
 }
 
-.row > .element.valid {
+wordle-board > .row > .element.valid {
     animation: showValid 0.7s forwards;
 }
 
-.row > .element.halfValid {
+wordle-board > .row > .element.halfValid {
     animation: showHalfValid 0.7s forwards;
 }
 
-.row > .element.invalid {
+wordle-board > .row > .element.invalid {
     animation: showInvalid 0.7s forwards;
 }
 
