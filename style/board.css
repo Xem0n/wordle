@@ -33,7 +33,7 @@ wordle-board {
     min-width: 300px;
     max-width: 350px;
 
-    margin-top: 40px;
+    margin-top: 10px;
 
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
