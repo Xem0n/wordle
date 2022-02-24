@@ -145,6 +145,7 @@ class Game {
 
     #initListeners() {
         document.addEventListener('keydown', this.#handleKeyDown.bind(this));
+        this.#board.addEventListener('enter', this.#checkWord.bind(this));
         this.#notification.addEventListener('hide', this.#handleHideNotification.bind(this));
     }
 }
