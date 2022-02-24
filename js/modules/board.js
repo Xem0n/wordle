@@ -1,5 +1,7 @@
 'use strict';
 
+const ENTER_EVENT = new Event('enter');
+
 class WordleBoard extends HTMLElement {
     #root;
     #board;
@@ -12,6 +14,8 @@ class WordleBoard extends HTMLElement {
         this.#keyboard = document.querySelector('.keyboard');
 
         this.#board = [];
+
+        this.#initListeners();
     }
 
     create(rows, elements) {
@@ -99,6 +103,57 @@ class WordleBoard extends HTMLElement {
         this.querySelectorAll('*').forEach(element => element.remove());
 
         this.#board = [];
+    }
+
+    #handleKeyboardClick(event) {
+        const target = event.target;
+    
+        if (!target.classList.contains('key')) return;
+        if (target.classList.contains('special')) return;
+
+        this.#addLetter(target.textContent);
+    }
+
+    #addLetter(letter) {
+        const input = this.#getAvailableInput();
+
+        if (input) {
+            input.value = letter;
+        }
+    }
+
+    #removeLastLetter() {
+        const input = this.#getLastFilledInput();
+
+        if (input) {
+            input.value = '';
+        }
+    }
+
+    #getAvailableInput() {
+        const inputs = this.querySelectorAll('input:not(:disabled)');
+
+        return Array.from(inputs).find(element => 
+            element.value.trim() === ''
+        );
+    }
+
+    #getLastFilledInput() {
+        const inputs = this.querySelectorAll('input:not(:disabled)');
+
+        return Array.from(inputs).reverse().find(element => 
+            element.value.trim() !== ''    
+        );
+    }
+
+    #handleEnter() {
+        this.dispatchEvent(ENTER_EVENT);
+    }
+
+    #initListeners() {
+        this.#keyboard.addEventListener('click', this.#handleKeyboardClick.bind(this));
+        this.#keyboard.querySelector('#enter').addEventListener('click', this.#handleEnter.bind(this));
+        this.#keyboard.querySelector('#delete').addEventListener('click', this.#removeLastLetter.bind(this));
     }
 }
 
