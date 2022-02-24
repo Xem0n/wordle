@@ -3,11 +3,13 @@
 class WordleBoard extends HTMLElement {
     #root;
     #board;
+    #keyboard;
 
     constructor() {
         super();
 
         this.#root = document.querySelector(':root');
+        this.#keyboard = document.querySelector('.keyboard');
 
         this.#board = [];
     }
