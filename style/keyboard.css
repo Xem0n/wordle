@@ -35,6 +35,7 @@
     text-transform: uppercase;
 
     cursor: pointer;
+    user-select: none;
 }
 
 .keyboard > .row > .key.special {
