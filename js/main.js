@@ -2,8 +2,8 @@
 
 import User from './modules/user.js';
 import Game from './modules/game.js';
-import './modules/board.js';
 import './modules/keyboard.js';
+import './modules/board.js';
 import './modules/notification.js';
 
 const board = document.querySelector('wordle-board');
