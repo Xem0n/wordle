@@ -28,6 +28,14 @@ class WordleKeyboard extends HTMLElement {
         key?.classList.add(state);
     }
 
+    clear() {
+        this.#keys.forEach(key => {
+            key.classList.remove('invalid');
+            key.classList.remove('halfValid');
+            key.classList.remove('valid');
+        });
+    }
+
     #handleKey(event) {
         const target = event.target;
     

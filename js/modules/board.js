@@ -102,6 +102,8 @@ class WordleBoard extends HTMLElement {
             element.value = '';
             element.disabled = true;
         });
+
+        this.#keyboard.clear();
     }
 
     cleanup() {
