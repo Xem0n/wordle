@@ -20,7 +20,7 @@ class WordleBoard extends HTMLElement {
     }
 
     create(rows, elements) {
-        this.#updateBoardSize(elements);
+        this.#updateBoardSize(rows, elements);
         this.#board = [];
 
         for (let i = 0; i < rows; i++) {
@@ -28,8 +28,9 @@ class WordleBoard extends HTMLElement {
         }
     }
 
-    #updateBoardSize(size) {
-        this.#root.style.setProperty('--columns', size);
+    #updateBoardSize(rows, columns) {
+        this.#root.style.setProperty('--rows', rows);
+        this.#root.style.setProperty('--columns', columns);
     }
 
     #createRow(elements) {
