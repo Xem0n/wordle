@@ -17,6 +17,8 @@ header {
 
     background: #0b090a;
     /* background: transparent; */
+
+    z-index: 200;
 }
 
 .title {
