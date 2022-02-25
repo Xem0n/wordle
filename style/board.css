@@ -1,12 +1,17 @@
 :root {
     --columns: 5;
+
+    --invalid: #131212;
+    --half-valid: #f9c74f;
+    --valid: #06d6a0;
 }
 
 .loading {
     width: 100px;
     aspect-ratio: 1/1;
 
-    margin-top: 35vh;
+    margin-top: 40px;
+    margin-bottom: 40px;
 
     border-width: 5px;
     border-style: solid;
@@ -83,8 +88,8 @@ wordle-board > .row > .element.invalid {
     
     to {
         transform: rotateX(0deg);
-        background: #06d6a0;
-        border-color: #06d6a0;
+        background: var(--valid);
+        border-color: var(--valid);
     }
 }
 
@@ -101,8 +106,8 @@ wordle-board > .row > .element.invalid {
     
     to {
         transform: rotateX(0deg);
-        background: #f9c74f;
-        border-color: #f9c74f;
+        background: var(--half-valid);
+        border-color: var(--half-valid);
     }
 }
 
@@ -119,8 +124,8 @@ wordle-board > .row > .element.invalid {
     
     to {
         transform: rotateX(0deg);
-        background: #131212;
-        border-color: #161a1d;
+        background: var(--invalid);
+        border-color: var(--invalid);
     }
 }
 
