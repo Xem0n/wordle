@@ -42,3 +42,15 @@ wordle-keyboard > .row > .key {
 wordle-keyboard > .row > .key.special {
     flex-basis: calc(100% / 4);
 }
+
+wordle-keyboard > .row > .key.invalid {
+    background: var(--invalid);
+}
+
+wordle-keyboard > .row > .key.halfValid {
+    background: var(--half-valid);
+}
+
+wordle-keyboard > .row > .key.valid {
+    background: var(--valid);
+}
