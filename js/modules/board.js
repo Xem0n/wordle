@@ -1,7 +1,5 @@
 'use strict';
 
-const ENTER_EVENT = new Event('enter');
-
 class WordleBoard extends HTMLElement {
     #root;
     #board;
@@ -11,11 +9,14 @@ class WordleBoard extends HTMLElement {
         super();
 
         this.#root = document.querySelector(':root');
-        this.#keyboard = document.querySelector('.keyboard');
+
+        this.#keyboard = document.querySelector('wordle-keyboard');
+        this.#keyboard.register({
+            addLetter: this.#addLetter.bind(this),
+            removeLastLetter: this.#removeLastLetter.bind(this)
+        });
 
         this.#board = [];
-
-        this.#initListeners();
     }
 
     create(rows, elements) {
@@ -105,15 +106,6 @@ class WordleBoard extends HTMLElement {
         this.#board = [];
     }
 
-    #handleKeyboardClick(event) {
-        const target = event.target;
-    
-        if (!target.classList.contains('key')) return;
-        if (target.classList.contains('special')) return;
-
-        this.#addLetter(target.textContent);
-    }
-
     #addLetter(letter) {
         const input = this.#getAvailableInput();
 
@@ -144,16 +136,6 @@ class WordleBoard extends HTMLElement {
         return Array.from(inputs).reverse().find(element => 
             element.value.trim() !== ''    
         );
-    }
-
-    #handleEnter() {
-        this.dispatchEvent(ENTER_EVENT);
-    }
-
-    #initListeners() {
-        this.#keyboard.addEventListener('click', this.#handleKeyboardClick.bind(this));
-        this.#keyboard.querySelector('#enter').addEventListener('click', this.#handleEnter.bind(this));
-        this.#keyboard.querySelector('#delete').addEventListener('click', this.#removeLastLetter.bind(this));
     }
 }
 
