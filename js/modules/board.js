@@ -85,7 +85,11 @@ class WordleBoard extends HTMLElement {
 
     showLetter(row, column, state, delay) {
         setTimeout(() => {
-            this.#board[row][column].classList.add(state);
+            const element = this.#board[row][column];
+            element.classList.add(state);
+
+            const letter = element.querySelector('input').value;
+            this.#keyboard.changeLetter(letter, state);
         }, delay);
     }
 

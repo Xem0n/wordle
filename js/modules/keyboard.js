@@ -19,6 +19,15 @@ class WordleKeyboard extends HTMLElement {
         this.#addLetter = parameters.addLetter;
         this.#removeLastLetter = parameters.removeLastLetter;
     }
+
+    changeLetter(letter, state) {
+        const keysArray = Array.from(this.#keys);
+    
+        const key = keysArray.find(key => key.textContent === letter);
+
+        key?.classList.add(state);
+    }
+
     #handleKey(event) {
         const target = event.target;
     
