@@ -1,4 +1,4 @@
-.keyboard {
+wordle-keyboard {
     width: 100%;
     max-width: 500px;
     height: auto;
@@ -9,7 +9,7 @@
     grid-template-columns: 1fr;
 }
 
-.keyboard > .row {
+wordle-keyboard > .row {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
@@ -19,7 +19,7 @@
     gap: 5px;
 }
 
-.keyboard > .row > .key {
+wordle-keyboard > .row > .key {
     /* width: 35px; */
     flex-basis: calc(100% / 10 - 5px);
     min-width: 22px;
@@ -39,6 +39,6 @@
     user-select: none;
 }
 
-.keyboard > .row > .key.special {
+wordle-keyboard > .row > .key.special {
     flex-basis: calc(100% / 4);
 }
