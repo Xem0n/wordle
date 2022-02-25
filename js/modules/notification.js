@@ -47,14 +47,10 @@ class WordleNotification extends HTMLElement {
         this.#exp.innerText = exp.toString();
     }
 
-    #handleClose() {
-        this.hide();
-    }
-
     #initListeners() {
         const closeButton = this.querySelector('.close');
 
-        closeButton.addEventListener('click', this.#handleClose.bind(this));
+        closeButton.addEventListener('click', this.hide.bind(this));
     }
 }
 
