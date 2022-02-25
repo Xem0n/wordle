@@ -22,6 +22,7 @@
 .keyboard > .row > .key {
     /* width: 35px; */
     flex-basis: calc(100% / 10 - 5px);
+    min-width: 22px;
     height: 50px;
 
     display: flex;
