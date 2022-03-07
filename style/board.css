@@ -1,5 +1,5 @@
 :root {
-    --animation-time: 0.45;
+    --animation-time: 450;
 
     --columns: 5;
     --rows: 6;
@@ -79,15 +79,15 @@ wordle-board > .row > .element {
 }
 
 wordle-board > .row > .element.valid {
-    animation: showValid calc(var(--animation-time) * 1s) forwards;
+    animation: showValid calc(var(--animation-time) * 1ms) forwards;
 }
 
 wordle-board > .row > .element.halfValid {
-    animation: showHalfValid calc(var(--animation-time) * 1s) forwards;
+    animation: showHalfValid calc(var(--animation-time) * 1ms) forwards;
 }
 
 wordle-board > .row > .element.invalid {
-    animation: showInvalid calc(var(--animation-time) * 1s) forwards;
+    animation: showInvalid calc(var(--animation-time) * 1ms) forwards;
 }
 
 @keyframes showValid {
