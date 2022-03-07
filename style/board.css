@@ -88,12 +88,6 @@ wordle-board > .row > .element.invalid {
     animation: showInvalid 0.7s forwards;
 }
 
-wordle-board > .row > .element.invalid,
-wordle-board > .row > .element.halfValid,
-wordle-board > .row > .element.valid {
-    color: #fff;
-}
-
 @keyframes showValid {
     from {
         transform: rotateX(0deg);
@@ -169,6 +163,10 @@ wordle-board > .row > .element.valid {
     text-transform: uppercase;
 
     background: transparent;
+}
+
+.element > input:disabled {
+    color: #e0fbfc;
 }
 
 .element > input.active {
