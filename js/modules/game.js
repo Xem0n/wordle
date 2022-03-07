@@ -1,7 +1,7 @@
 'use strict';
 
 const KEY_ENTER = 'Enter';
-const DELAY = 550;
+const DELAY = getComputedStyle(document.querySelector(':root')).getPropertyValue('--animation-time');
 const DEFAULT_EXP = 10;
 
 class Game {
