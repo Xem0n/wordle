@@ -19,6 +19,8 @@ class WordleBoard extends HTMLElement {
         });
 
         this.#board = [];
+
+        this.#initListeners();
     }
 
     create(rows, elements) {
@@ -145,6 +147,26 @@ class WordleBoard extends HTMLElement {
         return Array.from(inputs).reverse().find(element => 
             element.value.trim() !== ''    
         );
+    }
+
+    #handleInput(event) {
+        const input = event.target;
+
+        if (input.value.length >= MAX_LENGTH) {
+            this.#focusNextInput(input);
+        }
+    }
+
+    #focusNextInput(currentInput) {
+        const nextInput = currentInput.parentNode.nextElementSibling?.firstElementChild;
+
+        if (nextInput) {
+            nextInput.focus();
+        }
+    }
+
+    #initListeners() {
+        this.addEventListener('input', this.#handleInput.bind(this));
     }
 }
 
