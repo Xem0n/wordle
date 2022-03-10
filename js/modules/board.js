@@ -1,5 +1,7 @@
 'use strict';
 
+const MAX_LENGTH = 1;
+
 class WordleBoard extends HTMLElement {
     #root;
     #board;
@@ -56,7 +58,7 @@ class WordleBoard extends HTMLElement {
 
         const input = document.createElement('input');
         input.type = 'text';
-        input.maxLength = '1';
+        input.maxLength = MAX_LENGTH;
         input.disabled = true;
         
         div.append(input);
